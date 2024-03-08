@@ -3,6 +3,7 @@
 namespace NovaAttachMany\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class ArrayRules implements Rule
 {
@@ -31,7 +32,7 @@ class ArrayRules implements Rule
 
         $this->rules = [$attribute => $this->rules];
 
-        $validator = \Validator::make($input, $this->rules, $this->messages($attribute));
+        $validator = Validator::make($input, $this->rules, $this->messages($attribute));
 
         $this->message = $validator->errors()->get($attribute);
 
